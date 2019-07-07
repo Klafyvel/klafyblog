@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Matrices et optique géométrique</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">KlafyBlog </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/drafts/matrices-et-optique-geometrique.html" rel="bookmark"
+           title="Permalink to Matrices et optique géométrique">Matrices et optique géométrique</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-07-04T23:00:00+02:00">
+                Published: jeu. 04 juillet 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/klafyvel.html">Klafyvel</a>
+        </address>
+<p>In <a href="/category/optics.html">Optics</a>.</p>
+<p>tags: <a href="/tag/french.html">french</a> <a href="/tag/optics.html">optics</a> </p>
+</footer><!-- /.post-info -->      <p>Aujourd'hui je sais que j'aime l'optique. Pourtant si on m'avait dit quand j'étais en première S que j'orienterais ma carrière vers ce domaine, je ne l'aurait pas cru. Tout simplement parce que pour moi, l'optique, c'était synonyme d'apprentissage de formules de conjugaison par cœur. Or j'étais (et je suis toujours) feignant. Vraiment. Apprendre quelque chose par cœur a toujours été quelque chose de rédhibitoire. Or j'ai pu rencontrer durant mes études une technique simple (à mon avis) pour faire de l'optique sans se prendre la tête avec des formules. Mais d'abord...</p>
+<h1>Rappels de mathématiques</h1>
+<p>Dans la suite nous allons avoir besoin de faire des calculs avec des matrices. Pas de panique, pas de prérequis compliqués je vais tout expliquer simplement. Les vrais matheux sont priés de m'envoyer un mail pour que l'on organise ma pendaison publique.</p>
+<p>Nous n'allons utiliser que des matrices <span class="math">\(2\times 2\)</span>. Qu'est-ce que donc que cela ? tout simplement un objet mathématique avec 4 dimension. C'est à dire que l'on définit avec quatre nombres. Par exemple si notre matrice <span class="math">\(M\)</span> est définie avec les nombres <span class="math">\(a\)</span>, <span class="math">\(b\)</span>, <span class="math">\(c\)</span> et <span class="math">\(d\)</span>, nous l'écrirons</p>
+<div class="math">\begin{equation}
+M = \begin{pmatrix}
+  a &amp; b \\
+  c &amp; d
+\end{pmatrix}
+\end{equation}</div>
+<p>Dans la suite nous auront également besoin de vecteurs. Là encore il s'agit d'un objet mathématique particulier. Un vecteur se caractérise par deux grandeurs. Ainsi par exemple, si l'on a un vecteru <span class="math">\(V\)</span> défini par les grandeurs <span class="math">\(x\)</span> et <span class="math">\(y\)</span>, on le notera</p>
+<div class="math">\begin{equation}
+V = \begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+\end{equation}</div>
+<h2>Opérations sur nos jouets : l'addition</h2>
+<p>Avec nos nouveaux jouets, nous allons pouvoir réaliser quelques opérations. Dans la suite, nous utiliserons deux matrices, <span class="math">\(M\)</span> et <span class="math">\(P\)</span>, et un vecteur <span class="math">\(V\)</span> que nous noterons comme suit :</p>
+<div class="math">\begin{equation}
+M = \begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}, \;
+P = \begin{pmatrix}
+e &amp; f \\
+g &amp; h
+\end{pmatrix},\;
+V = \begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+\end{equation}</div>
+<p>Dans cette partie, nous allons voir deux façons de combiner <span class="math">\(M\)</span> et <span class="math">\(P\)</span>. La première est de les additionner. Le résultat de l'addition de deux matrices s'écrit</p>
+<div class="math">\begin{equation}
+M + P = \begin{pmatrix} a &amp; b \\ c &amp; d\end{pmatrix} + \begin{pmatrix} e &amp; f \\ g &amp; h\end{pmatrix} = \begin{pmatrix} a+e &amp; b+f \\ c+g &amp; d+h\end{pmatrix}
+\end{equation}</div>
+<p>Rien de bien compliqué non ? <strong>la somme de deux matrices est une matrice dont les composantes sont les sommes des composantes des matrices</strong>.</p>
+<h2>Opérations sur nos jouets : multiplication par un scalaire</h2>
+<p>De même, on peut multiplier une matrice ou un vecteur par un scalaire. Soit <span class="math">\(\alpha\)</span> un scalaire,</p>
+<div class="math">\begin{equation}
+\alpha \times M = \begin{pmatrix}
+\alpha \times a &amp; \alpha \times b \\
+\alpha \times c &amp; \alpha \times d
+\end{pmatrix}, \; \alpha \times V = \begin{pmatrix}
+\alpha \times x \\
+\alpha \times y
+\end{pmatrix}
+\end{equation}</div>
+<p><strong>Le produit d'un scalaire et d'une matrice est une matrice dont les composantes sont le produit du scalaire et des composantes de la matrice</strong>. Pareillement, <strong>le produit d'un scalaire et d'un vecteur est un vecteur dont les composantes sont le produit du scalaire et des composantes du vecteur</strong></p>
+<p>Nous verrons d'autres opérations réalisables sur ces objets, mais nous n'en avons pas besoin pour l'instant.</p>
+<h1>Comment étudier la lumière ?</h1>
+<p>Il existe beaucoup de modèles de la lumière, que ce soit corpusculaire ou ondulatoire. La question de sa nature a donné l'occasion à beaucoup de scientifiques de s'arracher des cheveux. Quel est donc le bon modèle à utiliser ? la réponse est... que cela n'a pas d'importance dans notre cas. L'optique géométrique reste valide quelque soit la nature de la lumière, et tant que l'on considère son interaction avec des objets de grande taille. Enfin, l'optique géométrique ne permet pas d'expliquer des phénomènes tels que la diffraction ou les interférences.</p>
+<p>Nous allons étudier la propagation de la lumière dans un plan, dans une direction donnée. On utilisera un repère orthonormé <span class="math">\(\mathcal{O}_{x,y}\)</span>. Pour matérialiser le comportement de la lumière, on utilise le concept de <strong>rayons lumineux</strong>. Si vous imaginez la lumière comme étant de minuscules billes se déplaçant dans l'espace, alors ces rayons peuvent être vus comme des trajectoires. Nous faisons l'hypothèse que, sans interaction, la <strong>lumière se déplace en ligne droite</strong>. Autrement dit, si l'on trace un rayon lumineux dans le vide, il s'agit d'une droite. On peut donc représenter sa trajectoire comme sur l'image suivante :</p>
+<p><img alt="Rayon lumnieux" class=" article-image" src="/drafts/matrix_optics/rays/ray.svg"/></p>
+<p>On indique l'axe <span class="math">\(\mathcal{O}_x\)</span> (que l'on appelle l'<strong>axe optique</strong>) pour se donner une idée de la direction de propagation du rayon, et on donne le sens grâce à la petite flêche sur le rayon. En se plaçant à l'endroit sur l'axe <span class="math">\(\mathcal{O}_x\)</span> d'où est émis ce rayon, on peut donc caractériser cette demi-droite par deux informations : la hauteur <span class="math">\(y\)</span> et l'angle avec l'horizontale <span class="math">\(\theta\)</span>.</p>
+<p><img alt="Repèrage d'un rayon lumineux" class=" article-image" src="/drafts/matrix_optics/rays/rays_pos.svg"/></p>
+<p>On représente un le rayon avec le vecteur suivant : </p>
+<div class="math">$$\begin{pmatrix}y\\ \theta\end{pmatrix}$$</div>
+<p>Toute la suite de cet article aura pour but de travailler sur ce vecteur afin de trouver comment il évolue. Pour cela, nous allons avoir besoin d'un nouvel interlude mathématique...</p>
+<h1>Multiplications dans tous les sens</h1>
+<p>Pour l'instant, nous ne savons qu'additionner des matrices et multiplier par un scalaire un vecteur ou une matrice. Il temps que cela change !</p>
+<h2>Multiplication d'une matrice et d'un vecteur</h2>
+<p>Nous allons définir la multiplication à gauche d'un vecteur par une matrice. Attention, ici, le sens de la multiplication est important. On parle bien de la multiplication <span class="math">\(M\cdot V\)</span>. On la défini ainsi :</p>
+<div class="math">\begin{equation}
+M\cdot V = \begin{pmatrix}
+  a &amp; b \\
+  c &amp; d
+\end{pmatrix} \cdot \begin{pmatrix}
+x \\
+y
+\end{pmatrix} = \begin{pmatrix}
+a \times x + b \times y \\
+c \times x + d \times y
+\end{pmatrix}
+\end{equation}</div>
+<p><strong>Le produit d'une matrice et d'un vecteur est un vecteur dont les composantes sont la combinaison de la première ligne de la matrice avec les composantes du vecteur et la combinaison de la deuxième ligne de la matrice avec les composante du vecteur.</strong></p>
+<h2>Multiplication de deux matrices</h2>
+<p>On peut également multiplier deux matrices carrées (je rappelle que les matrices qui nous intéressent sont carrées). Ainsi,</p>
+<div class="math">\begin{equation}
+M\cdot P = \begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix} \cdot \begin{pmatrix}
+e &amp; f \\
+g &amp; h
+\end{pmatrix} = \begin{pmatrix}
+a \times e + b \times g &amp; a \times f + b \times h \\
+c \times e + d \times g &amp; c \times f + d \times h
+\end{pmatrix}
+\end{equation}</div>
+<p>On peut remarquer que le résultat est similaire à celui obtenu lors de la multiplication <span class="math">\(M \cdot V\)</span>, si l'on considère que la matrice <span class="math">\(P\)</span> comme un couple de vecteurs : </p>
+<div class="math">$$\begin{pmatrix} e \\ g \end{pmatrix} \text{et} \begin{pmatrix} f \\ h \end{pmatrix}$$</div>
+<p>.</p>
+<p>Cette formule peut sembler un peu pénible à retenir. À titre personnel, je la retrouve à l'aide d'une petite astuce que j'ai tenté de résumer dans l'animation suivante :</p>
+<p><img alt="Animation du produit matriciel" class=" article-image" src="/drafts/matrix_optics/anime_matrix/anime_optimized.gif"/></p>
+<h1>Matrices optique</h1>
+<p>Grâce au produit matriciel, nous allons pouvoir exprimer les transformations que subit le vecteur représentant la lumière lorsque cette dernière se propage. L'idée principale est de déduire une matrice <span class="math">\(M\)</span> telle que, si l'on connaît le vecteur originel <span class="math">\(V\)</span>, on puisse déduire le vecteur d'arrivée <span class="math">\(V'\)</span> tel que <span class="math">\(V' = M\cdot V\)</span>.</p>
+<h2>Propagation dans un matériau</h2>
+<p>Supposons que l'on souhaite connaître l'évolution de notre vecteur après propagation dans un matériau sur une longueur <span class="math">\(l\)</span>.</p>
+<p><img alt="Schéma de propagation" class=" article-image" src="/drafts/matrix_optics/rays/rays_propa.svg"/></p>
+<p>On a alors </p>
+<div class="math">$$dy = \tan (\theta) \times l$$</div>
+<p>Comme on se place dans l'approximation des petits angles, on a alors </p>
+<div class="math">$$dy \approx \theta \times l$$</div>
+<p>Si on pose <span class="math">\(V\)</span> le vecteur originel et <span class="math">\(V'\)</span> le vecteur après propagation, tels que </p>
+<div class="math">$$V = \begin{pmatrix}y\\ \theta\end{pmatrix},\; V'=\begin{pmatrix}y'\\ \theta'\end{pmatrix}$$</div>
+<p> on a : </p>
+<div class="math">$$V' = \begin{pmatrix}y + dy\\ \theta\end{pmatrix} = \begin{pmatrix}y  + l\times\theta\\ \theta\end{pmatrix}$$</div>
+<p>Cette expression va nous permettre de déduire une matrice <span class="math">\(M\)</span> telle que <span class="math">\(V' = M\cdot V\)</span> :</p>
+<div class="math">$$M = \begin{pmatrix}1 &amp; l\\ 0 &amp; 1\end{pmatrix}$$</div>
+<p>On remarque que l'angle de propagation ne varie pas lorsque le rayon se propage dans le vide, ce qui est conforme à notre dessin. Il est temps de trouver des matrices plus amusantes.</p>
+<h2>Loi de Snell-Descartes et interfaces entre milieux</h2>
+<p>Jusqu'à maintenant j'ai, dans le but de simplifier, supposé que la lumière se propageait dans le vide. Mais afin de pouvoir altérer son angle de propagation, il est utile de lui faire changer de milieu. Pour rappel, en optique géométrique, on caractérise un milieu par son indice, noté <span class="math">\(n\)</span>. Ainsi, si l'on considère l'interface entre deux milieux d'indices <span class="math">\(n_1\)</span> et <span class="math">\(n_2\)</span>, un rayon qui se propage en direction de cette interface se verra en partie réfléchi, et en partie transmis (on parle de <strong>réfraction</strong>).</p>
+<p><img alt="Schéma réfraction" class=" article-image" src="/drafts/matrix_optics/rays/rays_interface.svg"/></p>
+<p>Comme le laisse deviner mon schéma, la partie réfléchie le sera de l'autre côté de la normale avec le même angle que celui d'arrivée. L'autre partie sera transmise avec un angle <span class="math">\(\theta_2\)</span> qui vérifie la relation de Snell-Descartes : </p>
+<div class="math">$$n_1\sin(\theta_1) = n_2\sin(\theta_2)$$</div>
+<p>Nous voulons exprimer la relation entre <span class="math">\(V\)</span> le vecteur du rayon avant l'interface et <span class="math">\(V'\)</span> le vecteur après l'interface. Dans l'approximation des petits angles, la relation de Snell-Descartes s'écrit </p>
+<div class="math">$$n_1\cdot\theta_1 = n_2\cdot\theta_2$$</div>
+<p>
+La position du rayon ne changeant pas, la composante <span class="math">\(y\)</span> de <span class="math">\(V'\)</span> est la même que celle de <span class="math">\(V\)</span>. On a alors </p>
+<div class="math">$$V' = \begin{pmatrix}y\\\frac{n_1}{n_2}\theta_1\end{pmatrix}$$</div>
+<p>On peut donc en déduire la matrice <span class="math">\(M\)</span>: </p>
+<div class="math">$$M = \begin{pmatrix}1 &amp; 0\\ 0 &amp; \frac{n_1}{n_2}\end{pmatrix}$$</div>
+<h2>Exercice : combinaison de propagations</h2>
+<p>Avec les deux matrices que nous avons vu, nous pouvons déjà réaliser un premier exercice !</p>
+<p>On dispose d'un objet plongé dans l'eau d'où partent deux rayons <span class="math">\(\sigma_1\)</span> et <span class="math">\(\sigma_2\)</span>. Le but est de calculer <span class="math">\(\sigma_1'\)</span> et <span class="math">\(\sigma_2'\)</span>, les vecteurs rayons qui résultent de leur propagation.</p>
+<p><img alt="Schéma de la propagation" class=" article-image" src="/drafts/matrix_optics/rays/exo_interface_1.svg"/></p>
+<p>On pose </p>
+<div class="math">$$\sigma_1 = \begin{pmatrix}y\\\theta_1\end{pmatrix},\;\sigma_2 = \begin{pmatrix}y\\\theta_2\end{pmatrix}$$</div>
+<p><strong>Données :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Grandeur</th>
+<th>Valeur</th>
+<th>Unité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math">\(l_1\)</span></td>
+<td><span class="math">\(10\)</span></td>
+<td>cm</td>
+</tr>
+<tr>
+<td><span class="math">\(l_2\)</span></td>
+<td><span class="math">\(40\)</span></td>
+<td>cm</td>
+</tr>
+<tr>
+<td><span class="math">\(e\)</span></td>
+<td><span class="math">\(3.0\)</span></td>
+<td>mm</td>
+</tr>
+<tr>
+<td><span class="math">\(n_0\)</span></td>
+<td><span class="math">\(1.3\)</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="math">\(n_1\)</span></td>
+<td><span class="math">\(1.5\)</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="math">\(n_2\)</span></td>
+<td><span class="math">\(1.0\)</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="math">\(y\)</span></td>
+<td><span class="math">\(5.0\)</span></td>
+<td>cm</td>
+</tr>
+<tr>
+<td><span class="math">\(\theta_1\)</span></td>
+<td><span class="math">\(0.0\)</span></td>
+<td>rad</td>
+</tr>
+<tr>
+<td><span class="math">\(\theta_2\)</span></td>
+<td><span class="math">\(1.7\times10^{-1}\)</span></td>
+<td>rad</td>
+</tr>
+</tbody>
+</table>
+<p>À vos stylos ! il est interdit de regarder la correction sans avoir essayé.</p>
+<h3>Correction</h3>
+<p>La première étape est de déterminer quelles matrices nous allons calculer. On peut découper la propagation en 5 étapes:</p>
+<ol>
+<li>Propagation dans l'eau;</li>
+<li>Interface eau-verre;</li>
+<li>Propagation dans le verre;</li>
+<li>Propagation dans l'air.</li>
+</ol>
+<p>Appelons <span class="math">\(P_0\)</span>, <span class="math">\(P_1\)</span> et <span class="math">\(P_2\)</span> les matrices de propagation dans l'eau, dans le verre et dans l'air. Appelons <span class="math">\(M_{e/v}\)</span> la matrice représentant l'interface eau-verre et <span class="math">\(M_{v/a}\)</span> la matrice représentant l'interface verre-air.</p>
+<p>On peut donner directement les expressions des matrices :</p>
+<div class="math">\begin{equation}
+P_0 = \begin{pmatrix}1 &amp; l_1\\ 0 &amp; 1\end{pmatrix},\;
+P_1 = \begin{pmatrix}1 &amp; e\\ 0 &amp; 1\end{pmatrix},\;
+P_2 = \begin{pmatrix}1 &amp; l_2\\ 0 &amp; 1\end{pmatrix}\\
+M_{e/v} = \begin{pmatrix}1 &amp; 0\\ 0 &amp; \frac{n_0}{n_1}\end{pmatrix},\;
+M_{v/a} = \begin{pmatrix}1 &amp; 0\\ 0 &amp; \frac{n_1}{n_2}\end{pmatrix}
+\end{equation}</div>
+<p>On pourrait calculer étape par étape tous les vecteurs rayons, mais ce n'est pas nécessaire. En effet, on peut remarquer que pour un rayon représenté par un vecteur <span class="math">\(\sigma\)</span>, les vecteurs engendrés sont</p>
+<ul>
+<li><span class="math">\(\sigma' = P_0 \sigma\)</span>;</li>
+<li><span class="math">\(\sigma'' = M_{e/v} \sigma'\)</span>;</li>
+<li><span class="math">\(\sigma''' = P_1 \sigma''\)</span>;</li>
+<li><span class="math">\(\sigma'''' = M_{v/a} \sigma'''\)</span>;</li>
+<li><span class="math">\(\sigma''''' = P_2 \sigma''''\)</span>;</li>
+</ul>
+<p>En "dépliant" le tout, on remarque qu'il suffit donc de calculer la matrice <span class="math">\(M\)</span> telle que </p>
+<div class="math">$$M = P_2 \cdot M_{v/a} \cdot P_1 \cdot M_{e/v} \cdot P_0$$</div>
+<p>Pour éviter de se fatiguer à tout calculer, on peut ici utiliser un logiciel de calcul formel comme <a href="https://www.wolframalpha.com/input/?i=%7B%7B1,+l_2%7D,%7B0,+1%7D%7D+*+%7B%7B1,+0%7D,%7B0,+n_1%2Fn_2%7D%7D+*+%7B%7B1,+e%7D,%7B0,+1%7D%7D+*+%7B%7B1,+0%7D,%7B0,+n_0%2Fn_1%7D%7D+*+%7B%7B1,+l_1%7D,%7B0,+1%7D%7D">wolfram alpha</a>. On obtient alors :</p>
+<div class="math">$$
+M = \begin{pmatrix}
+1 &amp; l_1 + \frac{n_0}{n_1}\left( \frac{n_1}{n_2}l_2 + e \right) \\
+0 &amp; \frac{n_0}{n_2}
+\end{pmatrix}
+$$</div>
+<p>On peut remarquer que, à condition que <span class="math">\(e\)</span> soit faible devant <span class="math">\(\frac{n_1}{n_2}l_2\)</span>, on a</p>
+<div class="math">$$
+M = \begin{pmatrix}
+1 &amp; l_1 + \frac{n_0}{n_2}l_2 \\
+0 &amp; \frac{n_0}{n_2}
+\end{pmatrix} = \begin{pmatrix}1 &amp; l_2\\0 &amp; 1\end{pmatrix}\begin{pmatrix}1 &amp; 0\\0 &amp; \frac{n_0}{n_2}\end{pmatrix}\begin{pmatrix}1 &amp; l_1\\0 &amp; 1\end{pmatrix}
+$$</div>
+<p>C'est à dire que si l'on a un verre suffisamment fin, on peut ne considérer qu'une interface eau-air.</p>
+<p>Pour finir, on peut calculer les vecteurs d'arrivée. Pour cela j'ai réalisé un petit script en Julia:</p>
+<div class="highlight"><pre><span></span><span class="n">l_1</span> <span class="o">=</span> <span class="mi">10</span> <span class="c"># cm</span>
+<span class="n">l_2</span> <span class="o">=</span> <span class="mi">40</span> <span class="c"># cm</span>
+<span class="nb">e</span>   <span class="o">=</span> <span class="mf">3.0e-1</span> <span class="c"># cm</span>
+<span class="n">n_0</span> <span class="o">=</span> <span class="mf">1.3</span>
+<span class="n">n_1</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">n_2</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">y</span>   <span class="o">=</span> <span class="mf">5.0</span> <span class="c"># cm</span>
+
+<span class="n">θ_1</span> <span class="o">=</span> <span class="mi">0</span> <span class="c"># rd</span>
+<span class="n">θ_2</span> <span class="o">=</span> <span class="mf">1.7e-1</span> <span class="c">#rd</span>
+
+
+<span class="n">P_0</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">1</span>  <span class="n">l_1</span><span class="p">;</span> <span class="mi">0</span>   <span class="mi">1</span><span class="p">]</span>
+<span class="n">P_1</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">1</span>  <span class="nb">e</span><span class="p">;</span>   <span class="mi">0</span>   <span class="mi">1</span><span class="p">]</span>
+<span class="n">P_2</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">1</span>  <span class="n">l_2</span><span class="p">;</span> <span class="mi">0</span>   <span class="mi">1</span><span class="p">]</span>
+<span class="n">M_ev</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span>  <span class="mi">0</span><span class="p">;</span>   <span class="mi">0</span>   <span class="n">n_0</span><span class="o">/</span><span class="n">n_1</span><span class="p">]</span>
+<span class="n">M_va</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span>  <span class="mi">0</span><span class="p">;</span>   <span class="mi">0</span>   <span class="n">n_1</span><span class="o">/</span><span class="n">n_2</span><span class="p">]</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="n">P_2</span> <span class="o">*</span> <span class="n">M_va</span> <span class="o">*</span> <span class="n">P_1</span> <span class="o">*</span> <span class="n">M_ev</span> <span class="o">*</span> <span class="n">P_0</span>
+<span class="n">σ_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span><span class="p">;</span> <span class="n">θ_1</span><span class="p">]</span>
+<span class="n">σ_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span><span class="p">;</span> <span class="n">θ_2</span><span class="p">]</span>
+
+<span class="p">(</span><span class="n">M</span><span class="o">*</span><span class="n">σ_1</span><span class="p">,</span> <span class="n">M</span><span class="o">*</span><span class="n">σ_2</span><span class="p">)</span>
+</pre></div>
+<p>Ce qui nous donne : <code>([5.0, 0.0], [15.5842, 0.221])</code>. Comme on pouvait s'y attendre, le rayon qui part perpendiculairement aux interfaces n'est pas dévié. On peut calculer la valeur qu'aurait prise le vecteur si la propagation s'était faite sans changement de matériau :</p>
+<div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="p">[</span><span class="mi">1</span> <span class="n">l_1</span><span class="o">+</span><span class="n">l_2</span><span class="o">+</span><span class="nb">e</span><span class="p">;</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">σ_2</span>
+<span class="mi">2</span><span class="o">-</span><span class="n">element</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span><span class="o">:</span>
+ <span class="mf">13.551</span>
+  <span class="mf">0.17</span>
+</pre></div>
+<p>On voit que le rayon se serait trouvé plus bas. Inversement, pour obtenir un rayon arrivant à 15.5842 cm de haut, il aurait fallu que la source se trouve plus loin. Autrement dit, pour un observateur extérieur, la source semble plus éloignée que ce qu'elle est réellement.</p>
+<h2>Miroir, ô mon beau miroir</h2>
+<p>Miroir
+Miroir parabolique</p>
+<h2>Lentilles</h2>
+<p>Lentille</p>
+<h2>Interface sphérique et prisme</h2>
+<h2>Exercice : l'œil humain</h2>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script><style>img.article-image{
+display: block; margin-left: auto;
+margin-right: auto; max-width: 100%;
+}</style>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://klafyvel.me/">My personnal page</a></li>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/Klafyvel">My Twitter account</a></li>
+                            <li><a href="https://github.com/Klafyvel">My Github account</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
