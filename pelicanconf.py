@@ -10,7 +10,7 @@ import pelican_render_math
 
 AUTHOR = "Klafyvel"
 SITENAME = "KlafyBlog"
-SITEURL = ""
+SITEURL = "https://klafyvel.me/blog/"
 
 PATH = "content"
 

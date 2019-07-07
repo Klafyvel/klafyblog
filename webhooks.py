@@ -12,7 +12,6 @@ import json
 from subprocess import Popen, PIPE
 from configparser import ConfigParser
 from pathlib import Path
-import shutil
 
 import netaddr
 import requests
@@ -90,9 +89,9 @@ def index():
     if event == "ping":
         return json.dumps({"msg": "pong"})
     try:
-        payload = request.get_json()
-    except Exception:
-        logging.warning("Request parsing failed")
+        payload = request.json
+    except Exception as e:
+        logging.warning("Request parsing failed : %s", e)
         abort(400)
 
     if payload["ref"] != "refs/heads/master":
@@ -108,10 +107,6 @@ def index():
     logging.info("Generating the files")
     with Popen(["/usr/bin/make", "html"], stdout=PIPE) as proc:
         logging.debug(proc.stdout.read())
-    logging.info("Done.")
-
-    logging.info("Copying the files to %s", config["BLOG"]["blog_location"])
-    shutil.move(current_dir / "output", dst)
     logging.info("Done.")
 
     return HTTPResponse(body="Fine.", status=200)

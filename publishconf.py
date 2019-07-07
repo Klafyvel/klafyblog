@@ -12,7 +12,8 @@ sys.path.append(os.curdir)
 from pelicanconf import *
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
-SITEURL = "https://klafyvel.me/blog"
+SITEURL = "https://klafyvel.me/blog/"
+STATIC_URL = "https://klafyvel.me/blog/{path}"
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = "feeds/all.atom.xml"
