@@ -1,7 +1,8 @@
-Title: Matrices et optique géométrique
+Title: Matrices et optique géométrique #1
 Date: 2019-07-04 23:00
 Category: Optics
 Tags: french, optics
+Status: published
 
 Aujourd'hui je sais que j'aime l'optique. Pourtant si on m'avait dit quand j'étais en première S que j'orienterais ma carrière vers ce domaine, je ne l'aurait pas cru. Tout simplement parce que pour moi, l'optique, c'était synonyme d'apprentissage de formules de conjugaison par cœur. Or j'étais (et je suis toujours) feignant. Vraiment. Apprendre quelque chose par cœur a toujours été quelque chose de rédhibitoire. Or j'ai pu rencontrer durant mes études une technique simple (à mon avis) pour faire de l'optique sans se prendre la tête avec des formules. Mais d'abord...
 
@@ -286,7 +287,7 @@ julia> [1 l_1+l_2+e; 0 1]*σ_2
 
 On voit que le rayon se serait trouvé plus bas. Inversement, pour obtenir un rayon arrivant à 15.5842 cm de haut, il aurait fallu que la source se trouve plus loin. Autrement dit, pour un observateur extérieur, la source semble plus éloignée que ce qu'elle est réellement.
 
-## Miroir, ô mon beau miroir
+<!-- ## Miroir, ô mon beau miroir
 
 Miroir
 Miroir parabolique
@@ -297,4 +298,4 @@ Lentille
 
 ## Interface sphérique et prisme
 
-## Exercice : l'œil humain
+## Exercice : l'œil humain -->

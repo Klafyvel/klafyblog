@@ -46,7 +46,9 @@ def index(name):
     config = ConfigParser()
     config.read(current_dir / "webhooks.conf")
 
-    mac = hmac.new(str(config["secret"]), msg=request.data, digestmod="sha1")
+    mac = hmac.new(
+        str(config["secret"]).encode("utf8"), msg=request.body.read(), digestmod="sha1"
+    )
     if not hmac.compare_digest(str(mac.hexdigest()), str(signature)):
         abort(403)
 
