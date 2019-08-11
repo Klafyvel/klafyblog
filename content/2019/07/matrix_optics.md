@@ -79,7 +79,7 @@ Il existe beaucoup de modèles de la lumière, que ce soit corpusculaire ou ondu
 
 Nous allons étudier la propagation de la lumière dans un plan, dans une direction donnée. On utilisera un repère orthonormé $\mathcal{O}_{x,y}$. Pour matérialiser le comportement de la lumière, on utilise le concept de **rayons lumineux**. Si vous imaginez la lumière comme étant de minuscules billes se déplaçant dans l'espace, alors ces rayons peuvent être vus comme des trajectoires. Nous faisons l'hypothèse que, sans interaction, la **lumière se déplace en ligne droite**. Autrement dit, si l'on trace un rayon lumineux dans le vide, il s'agit d'une droite. On peut donc représenter sa trajectoire comme sur l'image suivante :
 
-![Rayon lumnieux]({attach}matrix_optics/rays/ray.svg)
+![Rayon lumineux]({attach}matrix_optics/rays/ray.svg)
 
 On indique l'axe $\mathcal{O}_x$ (que l'on appelle l'**axe optique**) pour se donner une idée de la direction de propagation du rayon, et on donne le sens grâce à la petite flêche sur le rayon. En se plaçant à l'endroit sur l'axe $\mathcal{O}_x$ d'où est émis ce rayon, on peut donc caractériser cette demi-droite par deux informations : la hauteur $y$ et l'angle avec l'horizontale $\theta$.
 
